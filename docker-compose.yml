@@ -1,6 +1,17 @@
 version: "3.8"
 
 services:
+  
+  kafka:
+    image: confluentinc/confluent-local:latest
+    container_name: smt-kafka
+    hostname: kafka
+    ports:
+      - "9091:9092"
+      - "8082:8082"
+    environment:
+      KAFKA_KRAFT_CLUSTER_ID: "4V4Z-1L-0M-1N-0E"
+
   postgres:
     image: postgres:16-alpine
     container_name: stm-postgres
