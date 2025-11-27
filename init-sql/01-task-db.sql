@@ -1,1 +1,1 @@
-CREATE DATABSE taskdb;
+CREATE DATABASE taskdb;
