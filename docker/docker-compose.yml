@@ -4,7 +4,7 @@ services:
   
   kafka:
     image: confluentinc/confluent-local:latest
-    container_name: smt-kafka
+    container_name: stm-kafka
     hostname: kafka
     ports:
       - "9091:9092"
@@ -13,16 +13,16 @@ services:
       KAFKA_KRAFT_CLUSTER_ID: "4V4Z-1L-0M-1N-0E"
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:15
     container_name: stm-postgres
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: stmuser
-      POSTGRES_PASSWORD: stmpassword
+      POSTGRES_USER: adminuser
+      POSTGRES_PASSWORD: adminpassword
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init-sql:/docker-entrypoint-initdb.d #Create multiple DBs automatically
+      - ../db/init-sql:/docker-entrypoint-initdb.d #Create multiple DBs automatically
 
 volumes:
   postgres_data:
